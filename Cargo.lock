@@ -284,7 +284,7 @@ dependencies = [
 [[package]]
 name = "termren"
 version = "0.1.0"
-source = "git+https://github.com/Stuff7/termren?branch=master#0f36d4d6f05139d92905a351466f787d4ece4d35"
+source = "git+https://github.com/Stuff7/termren?branch=master#39ae3fab9ac7639965c016f83f6b5b4ce7f22d45"
 dependencies = [
  "console",
  "crossterm",
