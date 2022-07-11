@@ -2,9 +2,8 @@ use termren;
 use std::{rc::Rc, cell::RefCell};
 
 fn main() {
-  let mut drawables: Vec<termren::Drawable> = vec![];
-  // H
-  drawables.push(vec![
+  let pixels: Vec<termren::Pixel> = vec![
+    // H
     (1, 1).into(),
     (1, 2).into(),
     (1, 3).into(),
@@ -22,9 +21,8 @@ fn main() {
     (11, 3).into(),
     (11, 4).into(),
     (11, 5).into(),
-  ].into());
-  // E
-  drawables.push(vec![
+
+    // E
     (17, 1).into(),
     (17, 2).into(),
     (17, 3).into(),
@@ -44,9 +42,8 @@ fn main() {
     (21, 5).into(),
     (23, 5).into(),
     (25, 5).into(),
-  ].into());
-  // L
-  drawables.push(vec![
+
+    // L
     (31, 1).into(),
     (31, 2).into(),
     (31, 3).into(),
@@ -57,9 +54,8 @@ fn main() {
     (35, 5).into(),
     (37, 5).into(),
     (39, 5).into(),
-  ].into());
-  // L
-  drawables.push(vec![
+
+    // L
     (45, 1).into(),
     (45, 2).into(),
     (45, 3).into(),
@@ -70,9 +66,8 @@ fn main() {
     (49, 5).into(),
     (51, 5).into(),
     (53, 5).into(),
-  ].into());
-  // O
-  drawables.push(vec![
+
+    // O
     (59, 1).into(),
     (59, 2).into(),
     (59, 3).into(),
@@ -93,20 +88,23 @@ fn main() {
     (69, 2).into(),
     (69, 3).into(),
     (69, 4).into(),
-    (69, 5).into(),
-  ].into());
+    (69, 5).into()
+  ];
   let game = SnakeGame {
-    drawables,
+    pixels,
   };
   termren::Renderer::new(Rc::new(RefCell::new(game))).set_fps(60).run();
 }
 
 struct SnakeGame {
-  drawables: Vec<termren::Drawable>,
+  pixels: Vec<termren::Pixel>,
 }
 
 impl termren::EventHandler for SnakeGame {
-  fn update(&mut self, event_option: Option<termren::Event>) -> &Vec<termren::Drawable> {
+  fn update(
+    &mut self,
+    event_option: Option<termren::Event>
+  ) -> termren::SingleOrMulti<termren::Pixel> {
     let mut dx: i16 = 0;
     let mut dy: i16 = 0;
     if let Some(event) = event_option {
@@ -120,16 +118,15 @@ impl termren::EventHandler for SnakeGame {
         dx = 2;
       }
     }
-    for d in self.drawables.iter_mut() {
-      for px in d.pixels.iter_mut() {
-        px.x = if px.x <= 1 && dx < 0 {
-          px.x
-        } else { (px.x as i16 + dx) as u16 };
-        px.y = if px.y <= 1 && dy < 0 {
-          px.y
-        } else { (px.y as i16 + dy) as u16 };
-      }
+    for px in self.pixels.iter_mut() {
+      px.x = if px.x <= 1 && dx < 0 {
+        px.x
+      } else { (px.x as i16 + dx) as u16 };
+      px.y = if px.y <= 1 && dy < 0 {
+        px.y
+      } else { (px.y as i16 + dy) as u16 };
     }
-    &self.drawables
+
+    termren::SingleOrMulti::Multi(&self.pixels)
   }
 }
