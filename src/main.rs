@@ -27,7 +27,7 @@ impl termren::EventHandler for SnakeGame {
     &mut self,
     event_option: Option<termren::Event>,
     timedelta: f64,
-  ) -> termren::SingleOrMulti<termren::Pixel> {
+  ) -> termren::Group<termren::Pixel> {
     self.timedelta_passed = self.timedelta_passed + timedelta;
     if let Some(event) = event_option {
       self.snake.steer(event);
@@ -37,6 +37,6 @@ impl termren::EventHandler for SnakeGame {
       self.snake.serpentine();
     }
 
-    termren::SingleOrMulti::Multi(&self.snake.body)
+    termren::Group::Multi(&self.snake.body)
   }
 }
