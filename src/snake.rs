@@ -12,14 +12,14 @@ pub struct Snake {
 }
 
 impl Snake {
-  pub fn new(x: u16, y: u16) -> Self {
+  pub fn new(x: u16, y: u16, length: u16) -> Self {
+    let mut body: Vec<Pixel> = vec![];
+    for i in 0..length {
+      body.push((x, y + i + 1, SNAKE_COLOR).into());
+    }
     Self {
       head: (x, y, SNAKE_COLOR).into(),
-      body: vec![
-        (x, y + 1, SNAKE_COLOR).into(),
-        (x, y + 2, SNAKE_COLOR).into(),
-        (x, y + 3, SNAKE_COLOR).into(),
-      ].into(),
+      body: body.into(),
       direction: Direction::Right,
       prev_direction: Direction::Right,
       next_direction: None,

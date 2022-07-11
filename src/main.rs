@@ -5,7 +5,7 @@ use std::{rc::Rc, cell::RefCell};
 use snake::Snake;
 
 fn main() {
-  let game = SnakeGame::new(Snake::new(6, 10));
+  let game = SnakeGame::new(Snake::new(6, 10, 16));
   termren::Renderer::new(Rc::new(RefCell::new(game))).set_fps(60).run();
 }
 
