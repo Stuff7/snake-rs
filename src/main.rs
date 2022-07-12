@@ -42,8 +42,8 @@ impl termren::EventHandler for SnakeGame {
     }
     if self.timedelta_passed >= TPS {
       self.timedelta_passed = 0.0;
-      self.snake.serpentine();
       self.snake.try_eat(&mut self.food, ctx);
+      self.snake.serpentine();
     }
 
     self.pixels = vec![
@@ -55,9 +55,9 @@ impl termren::EventHandler for SnakeGame {
     (
       termren::Group::Multi(self.pixels.as_slice()),
       Some(format!(
-        "{pos_start}Score: {green}{snake_length}{reset}\
-        Food: {green}({food_x}, {food_y}){reset}\
-        Snake: {green}({snake_x}, {snake_y}){reset}\
+        "{pos_start}Score: {green}{snake_length}{reset} \
+        Food: {green}({food_x}, {food_y}){reset} \
+        Snake: {green}({snake_x}, {snake_y}){reset} \
         Console: {green}({csl_x}, {csl_y}){reset}",
         pos_start = termren::console::seq::CURSOR_START,
         green = termren::console::seq::fg_rgb(100, 200, 50),

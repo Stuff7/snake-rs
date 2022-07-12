@@ -72,12 +72,12 @@ impl Snake {
 
   pub fn try_eat(&mut self, food: &mut super::Food, ctx: &termren::Context) {
     if self.head == food.pixel {
-      food.relocate(ctx);
       if let Some(last_tail) = self.body.back() {
         self.body.push_back(*last_tail);
       } else {
         self.body.push_back(self.head)
       }
+      food.relocate(ctx);
     }
   }
 }
