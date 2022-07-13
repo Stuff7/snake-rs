@@ -15,8 +15,8 @@ pub struct Snake {
 impl Snake {
   pub fn new(x: u16, y: u16, length: u16) -> Self {
     let mut body: Vec<Pixel> = vec![];
-    for i in 0..length {
-      body.push((x, y + i + 1, SNAKE_COLOR, SNAKE_PX).into());
+    for _ in 0..length {
+      body.push((x, y, SNAKE_COLOR, SNAKE_PX).into());
     }
     Self {
       head: (x, y, SNAKE_COLOR, SNAKE_PX).into(),
