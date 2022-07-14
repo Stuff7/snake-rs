@@ -2,7 +2,7 @@ use std::collections::VecDeque;
 use termren::Pixel;
 
 const SNAKE_COLOR: termren::Color = termren::Color { r: 120, g: 220, b: 120 };
-const SNAKE_PX: [char; 2] = ['░', '░'];
+const SNAKE_PX: &str = "░░";
 
 pub struct Snake {
   pub head: Pixel,

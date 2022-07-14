@@ -8,7 +8,7 @@ pub struct Food {
 
 impl Food {
   pub fn new(x: u16, y: u16) -> Self {
-    Self { pixel: (x, y, FOOD_COLOR, '▓').into() }
+    Self { pixel: (x, y, FOOD_COLOR, "▓▓").into() }
   }
 
   pub fn relocate(&mut self, ctx: &termren::Context) {

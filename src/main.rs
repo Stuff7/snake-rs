@@ -7,11 +7,12 @@ use snake::Snake;
 use food::Food;
 
 fn main() {
-  let game = SnakeGame::new(Snake::new(6, 10, 16));
+  let game = SnakeGame::new(Snake::new(6, 10, 10));
+  // let game = RainbowMosaicGame::new();
   termren::Renderer::new(Rc::new(RefCell::new(game))).set_fps(60).run();
 }
 
-const TPS: f64 = 1.0 / 30.0;
+const TPS: f64 = 1.0 / 20.0;
 
 struct SnakeGame {
   snake: Snake,
@@ -73,3 +74,28 @@ impl termren::EventHandler for SnakeGame {
     )
   }
 }
+
+// struct RainbowMosaicGame {
+//   pixels: Vec<termren::Pixel>,
+// }
+
+// impl RainbowMosaicGame {
+//   pub fn new() -> Self {
+//     let mut pixels = vec![];
+//     for x in 1..120 {
+//       for y in 1..30 {
+//         pixels.push((x, y).into());
+//       }
+//     }
+//     Self { pixels }
+//   }
+// }
+
+// impl termren::EventHandler for RainbowMosaicGame {
+//   fn update(
+//     &mut self,
+//     _: &termren::Context,
+//   ) -> (termren::Group<termren::Pixel>, Option<String>) {
+//     (termren::Group::Multi(self.pixels.as_slice()), None)
+//   }
+// }
