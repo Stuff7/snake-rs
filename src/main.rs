@@ -12,7 +12,7 @@ fn main() {
   termren::Renderer::new(Rc::new(RefCell::new(game))).set_fps(60).run();
 }
 
-const TPS: f64 = 1.0 / 20.0;
+const TPS: f64 = 1.0 / 30.0;
 
 struct SnakeGame {
   snake: Snake,
