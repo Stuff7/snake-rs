@@ -1,6 +1,7 @@
 use termren::{Pixel, Color};
 
 const FOOD_COLOR: Color = Color::new(220, 150, 120);
+const FOOD_TEXTURE: &str = "▓▓";
 
 pub struct Food {
   pub pixel: Pixel,
@@ -8,7 +9,7 @@ pub struct Food {
 
 impl Food {
   pub fn new(x: u16, y: u16) -> Self {
-    Self { pixel: (x, y, FOOD_COLOR, "▓▓").into() }
+    Self { pixel: (x, y, FOOD_COLOR, FOOD_TEXTURE).into() }
   }
 
   pub fn relocate(&mut self, ctx: &termren::Context) {
