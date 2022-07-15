@@ -29,7 +29,7 @@ checksum = "baf1de4339761588bc0619e3cbc0120ee582ebb74b53b4efbf79117bd2da40fd"
 [[package]]
 name = "console"
 version = "0.1.0"
-source = "git+https://github.com/Stuff7/console?branch=master#77f4e3e35a3655473c445494fbfe804403e0e767"
+source = "git+https://github.com/Stuff7/console?branch=master#7610973e781cf72086a5e2b50c745a7f8a5b1d9c"
 dependencies = [
  "terminal_size",
 ]
@@ -284,7 +284,7 @@ dependencies = [
 [[package]]
 name = "termren"
 version = "0.1.0"
-source = "git+https://github.com/Stuff7/termren?branch=master#39ae3fab9ac7639965c016f83f6b5b4ce7f22d45"
+source = "git+https://github.com/Stuff7/termren?branch=master#fd179b9c71a38ed1fda0774ac816363de3e65d66"
 dependencies = [
  "console",
  "crossterm",
